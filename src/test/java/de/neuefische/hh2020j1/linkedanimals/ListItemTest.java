@@ -4,15 +4,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AnimalListItemTest {
+class ListItemTest {
 
     @Test
     void testAddOneAnimal() {
-        AnimalListItem head = new AnimalListItem(new Animal("Capibara"));
+        ListItem<Animal> head = new ListItem(new Animal("Capibara"));
 
         head.add(new Animal("Bird"));
 
-        AnimalListItem actualListItem = head.getNext();
+        ListItem<Animal> actualListItem = head.getNext();
 
         assertNotNull(actualListItem);
 
@@ -23,16 +23,16 @@ class AnimalListItemTest {
 
     @Test
     void testAddTwoAnimals(){
-        AnimalListItem head = new AnimalListItem(new Animal("Capibara"));
+        ListItem<Animal> head = new ListItem(new Animal("Capibara"));
 
         head.add(new Animal("Bird"));
         head.add(new Animal("Aligator"));
 
-        AnimalListItem secondListItem = head.getNext();
+        ListItem<Animal> secondListItem = head.getNext();
 
         assertNotNull(secondListItem);
 
-        AnimalListItem thirdListItem = secondListItem.getNext();
+        ListItem<Animal> thirdListItem = secondListItem.getNext();
 
         assertNotNull(thirdListItem);
 
@@ -43,7 +43,7 @@ class AnimalListItemTest {
 
     @Test
     void testToString(){
-        AnimalListItem head = new AnimalListItem(new Animal("Capibara"));
+        ListItem<Animal> head = new ListItem(new Animal("Capibara"));
         head.add(new Animal("Bird"));
         head.add(new Animal("Aligator"));
 
@@ -54,7 +54,7 @@ class AnimalListItemTest {
 
     @Test
     void testRemoveAllButFirst(){
-        AnimalListItem head = new AnimalListItem(new Animal("Bird"));
+        ListItem<Animal> head = new ListItem(new Animal("Bird"));
         head.add(new Animal("Capibara"));
 
         head.removeAll(new Animal("Capibara"));
@@ -63,14 +63,14 @@ class AnimalListItemTest {
 
         assertEquals(new Animal("Bird"), actualAnimal);
 
-        AnimalListItem actualListItem = head.getNext();
+        ListItem actualListItem = head.getNext();
 
         assertNull(actualListItem);
     }
 
     @Test
     void testRemoveAllIncludingFirst(){
-        AnimalListItem head = new AnimalListItem(new Animal("Capibara"));
+        ListItem<Animal> head = new ListItem(new Animal("Capibara"));
         head.add(new Animal("Bird"));
         head.add(new Animal("Capibara"));
 
@@ -80,14 +80,14 @@ class AnimalListItemTest {
 
         assertEquals(new Animal("Bird"), actualAnimal);
 
-        AnimalListItem actualListItem = head.getNext();
+        ListItem<Animal> actualListItem = head.getNext();
 
         assertNull(actualListItem);
     }
 
     @Test
     void testAddElementToEmptyList(){
-        AnimalListItem head = new AnimalListItem();
+        ListItem<Animal> head = new ListItem();
 
         head.add(new Animal("Capibara"));
 
